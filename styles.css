@@ -53,10 +53,6 @@ button:hover {
   gap: 10px;
 }
 
-#input:hover {
-  cursor: pointer;
-}
-
 #input p {
   font-size: 20px;
 }
@@ -65,8 +61,14 @@ input {
   width: 100%;
 }
 
+input:hover {
+  cursor: pointer;
+}
+
 #canvas {
-  background-color: black;
+  background-color: white;
   height: 500px;
   width: 500px;
+  filter: drop-shadow(0 0 5px hsla(0, 0%, 0%, 0.25));
+  display: grid;
 }
