@@ -9,19 +9,18 @@
   </head>
   <body>
     <main>
-      <aside id="color-picker">
-        <div id="black"></div>
-        <div id="white"></div>
-      </aside>
-      <section>
-        <h1>Etch-a-Sketch</h1>
-        <div id="canvas"></div>
-        <div id="buttons">
-          <button class="button" id="btn-16">16x16</button>
-          <button class="button" id="btn-32">32x32</button>
-          <button class="button" id="btn-64">64x64</button>
-        </div>
-        <button id="reset-btn">Reset</button>
+      <h1>Etch-a-Sketch</h1>
+      <section id="ctn">
+        <aside id="color-picker">
+          <button id="black-btn">Black</button>
+          <button id="white-btn">White</button>
+          <div id="input">
+            <p id="input-txt">32x32</p>
+            <input type="range" min="1" max="64" />
+          </div>
+          <button id="reset-btn">Reset</button>
+        </aside>
+        <section id="canvas"></section>
       </section>
     </main>
   </body>
