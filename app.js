@@ -14,9 +14,11 @@ function updateCanvas() {
 }
 
 function addDivs() {
-  let newDiv = document.createElement("div");
-  newDiv.classList.add("canvas-sq");
-  canvas.appendChild(newDiv);
+  for (let i = 0; i < input.value; i++) {
+    let newDiv = document.createElement("div");
+    newDiv.classList.add("canvas-sq");
+    canvas.appendChild(newDiv);
+  }
 }
 
 function setCanvasSize(e) {
