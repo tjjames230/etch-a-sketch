@@ -3,6 +3,9 @@ console.log("hi");
 const input = document.querySelector("input");
 const inputTxt = document.querySelector("#input-txt");
 const canvas = document.querySelector("#canvas");
+const resetBtn = document.querySelector("#reset-btn");
+const whiteBtn = document.querySelector("#white-btn");
+const blackBtn = document.querySelector("#black-btn");
 
 input.addEventListener("input", updateCanvas);
 
@@ -12,6 +15,14 @@ function updateCanvas() {
   setCanvasSize();
   addDivs();
 }
+
+resetBtn.addEventListener("click", () => {
+  resetCanvas();
+  input.value = "1";
+  updateInputText();
+  setCanvasSize();
+  addDivs();
+});
 
 function addDivs() {
   for (let i = 0; i < input.value; i++) {
@@ -23,14 +34,14 @@ function addDivs() {
   }
 }
 
-function setCanvasSize(e) {
+function resetCanvas() {
+  canvas.innerHTML = "";
+}
+
+function setCanvasSize() {
   canvas.style.gridTemplateColumns = `repeat(${input.value}, 1fr)`;
 }
 
-function updateInputText(e) {
+function updateInputText() {
   inputTxt.innerText = `${input.value} x ${input.value}`;
-}
-
-function resetCanvas() {
-  canvas.innerHTML = "";
 }
