@@ -8,6 +8,8 @@ let pixels = Array.from(document.querySelectorAll(".canvas-sq"));
 
 input.addEventListener("input", updateCanvas);
 
+colorPixels();
+
 blackBtn.addEventListener("click", () => {
   checkActive(blackBtn, whiteBtn);
 });
@@ -28,6 +30,15 @@ function updateCanvas() {
   setCanvasSize();
   addDivs();
   pixels = getPixels();
+  colorPixels();
+}
+
+function colorPixels() {
+  pixels.forEach((pixel) => {
+    pixel.addEventListener("mouseover", () => {
+      pixel.style.backgroundColor = "black";
+    });
+  });
 }
 
 function checkActive(button, otherButton) {
