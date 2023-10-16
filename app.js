@@ -16,6 +16,23 @@ function updateCanvas() {
   addDivs();
 }
 
+blackBtn.addEventListener("click", () => {
+  checkActive(blackBtn, whiteBtn);
+});
+
+whiteBtn.addEventListener("click", () => {
+  checkActive(whiteBtn, blackBtn);
+});
+
+function checkActive(button, otherButton) {
+  const isActive = Array.from(button.classList).includes("active-btn");
+
+  if (isActive !== true) {
+    button.classList.add("active-btn");
+    otherButton.classList.remove("active-btn");
+  }
+}
+
 resetBtn.addEventListener("click", () => {
   resetCanvas();
   input.value = "1";
