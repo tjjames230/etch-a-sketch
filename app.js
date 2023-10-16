@@ -5,6 +5,7 @@ const resetBtn = document.querySelector("#reset-btn");
 const whiteBtn = document.querySelector("#white-btn");
 const blackBtn = document.querySelector("#black-btn");
 let pixels = Array.from(document.querySelectorAll(".canvas-sq"));
+let isMouseDown = false;
 
 input.addEventListener("input", updateCanvas);
 
@@ -34,11 +35,21 @@ function updateCanvas() {
 }
 
 function colorPixels() {
-  pixels.forEach((pixel) => {
-    pixel.addEventListener("mouseover", () => {
-      pixel.style.backgroundColor = "black";
-    });
+  canvas.addEventListener("mousedown", () => {
+    isMouseDown = true;
   });
+
+  canvas.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
+
+  if (isMouseDown) {
+    pixels.forEach((pixel) => {
+      pixel.addEventListener("mouseover", () => {
+        pixel.style.backgroundColor = "black";
+      });
+    });
+  }
 }
 
 function checkActive(button, otherButton) {
