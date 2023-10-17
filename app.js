@@ -20,7 +20,6 @@ whiteBtn.addEventListener("click", () => {
 });
 
 resetBtn.addEventListener("click", () => {
-  input.value = "1";
   updateCanvas();
   checkActive(blackBtn, whiteBtn);
 });
@@ -35,22 +34,34 @@ function updateCanvas() {
 }
 
 function colorPixels() {
-  canvas.addEventListener("mousedown", () => {
+  let isMouseDown = false;
+  let color = getActiveBtnText();
+
+  document.addEventListener("mousedown", () => {
     isMouseDown = true;
   });
 
-  canvas.addEventListener("mouseup", () => {
+  document.addEventListener("mouseup", () => {
     isMouseDown = false;
   });
 
-  if (isMouseDown) {
-    pixels.forEach((pixel) => {
-      pixel.addEventListener("mouseover", () => {
-        pixel.style.backgroundColor = "black";
-      });
-    });
-  }
+  document.addEventListener("mousemove", (event) => {
+    if (isMouseDown) {
+      const pixel = event.target;
+      if (pixel.classList.contains("canvas-sq")) {
+        pixel.style.backgroundColor = color;
+      }
+    }
+  });
 }
+
+// function getActiveBtnText() {
+//   if (Array.from(blackBtn.classList).includes("active-btn")) {
+//     return "black";
+//   } else {
+//     return "white";
+//   }
+// }
 
 function checkActive(button, otherButton) {
   const isActive = Array.from(button.classList).includes("active-btn");
