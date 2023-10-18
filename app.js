@@ -6,6 +6,7 @@ const whiteBtn = document.querySelector("#white-btn");
 const blackBtn = document.querySelector("#black-btn");
 let pixels = Array.from(document.querySelectorAll(".canvas-sq"));
 let isMouseDown = false;
+let color = getActiveBtnText();
 
 input.addEventListener("input", updateCanvas);
 
@@ -30,12 +31,12 @@ function updateCanvas() {
   setCanvasSize();
   addDivs();
   pixels = getPixels();
+  color = getActiveBtnText();
   colorPixels();
 }
 
 function colorPixels() {
   let isMouseDown = false;
-  let color = getActiveBtnText();
 
   document.addEventListener("mousedown", () => {
     isMouseDown = true;
@@ -55,13 +56,13 @@ function colorPixels() {
   });
 }
 
-// function getActiveBtnText() {
-//   if (Array.from(blackBtn.classList).includes("active-btn")) {
-//     return "black";
-//   } else {
-//     return "white";
-//   }
-// }
+function getActiveBtnText() {
+  if (Array.from(blackBtn.classList).includes("active-btn")) {
+    return "black";
+  } else {
+    return "white";
+  }
+}
 
 function checkActive(button, otherButton) {
   const isActive = Array.from(button.classList).includes("active-btn");
@@ -70,6 +71,8 @@ function checkActive(button, otherButton) {
     button.classList.add("active-btn");
     otherButton.classList.remove("active-btn");
   }
+
+  color = getActiveBtnText();
 }
 
 function getPixels() {
